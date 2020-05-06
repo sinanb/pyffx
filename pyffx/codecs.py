@@ -59,3 +59,14 @@ class Integer(String):
 
     def unpack(self, v, t):
         return int(super(Integer, self).unpack(v, t))
+    
+ 
+class Long(String):
+    def __init__(self, ffx, length, **kwargs):
+        super(Long, self).__init__(ffx, string.digits, length, **kwargs)
+
+    def pack(self, v):
+        return super(Long, self).pack(str(v).zfill(self.length))
+
+    def unpack(self, v, t):
+        return long(super(Long, self).unpack(v, t))   
